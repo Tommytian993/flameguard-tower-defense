@@ -4,9 +4,9 @@ project(untitled)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(untitled main.cpp
-        manager.h
-        game_manager.h
-        tile.h)
+        include/manager/manager.h
+        include/manager/game_manager.h
+        include/tile.h)
 
 # Use sdl2-config to get the paths for SDL2
 execute_process(COMMAND sdl2-config --cflags OUTPUT_VARIABLE SDL2_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
