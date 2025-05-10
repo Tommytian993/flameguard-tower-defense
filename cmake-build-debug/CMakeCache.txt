@@ -220,6 +220,12 @@ SDL2_IMAGE_INCLUDE_DIR:PATH=/opt/homebrew/include/SDL2
 SDL2_IMAGE_LIBRARY:FILEPATH=/opt/homebrew/lib/libSDL2_image.dylib
 
 //Path to a file.
+SDL2_INCLUDE_DIR:PATH=/opt/homebrew/include/SDL2
+
+//Path to a library.
+SDL2_LIBRARY:FILEPATH=/opt/homebrew/lib/libSDL2.dylib
+
+//Path to a file.
 SDL2_MIXER_INCLUDE_DIR:PATH=/opt/homebrew/include/SDL2
 
 //Path to a library.
