@@ -9,7 +9,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/opt/homebrew/include/SDL2")
 add_executable(untitled main.cpp
         include/manager/manager.h
         include/manager/game_manager.h
-        include/tile.h)
+        include/tile.h
+        include/map.h
+        include/route.h
+        include/manager/config_manager.h
+        include/enemy/enemy_type.h
+        include/enemy/enemy_type.h
+        include/wave.h)
 
 # Find SDL2
 find_path(SDL2_INCLUDE_DIR SDL.h PATHS /opt/homebrew/include/SDL2 /usr/local/include/SDL2)
