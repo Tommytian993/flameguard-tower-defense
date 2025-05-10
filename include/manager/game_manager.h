@@ -56,26 +56,37 @@ public:
     }
 
 protected:
-    GameManager() {
+    GameManager()
+    {
         // 初始化SDL核心、图像、音频、字体等组件
-        init_assert(SDL_Init(SDL_INIT_EVERYTHING), "SDL2 初始化失败!");
-        init_assert(IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG), "SDL_image 初始化失败!");
-        init_assert(Mix_Init(MIX_INIT_MP3), "SDL_mixer 初始化失败!");
-        init_assert(TTF_Init(), "SDL_ttf 初始化失败!");
+        init_assert(SDL_Init(SDL_INIT_EVERYTHING) == 0, "SDL2 初始化失败!");
+
+        // 初始化 SDL_image，支持所有常用图片格式
+        int imgFlags = IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP;
+        int imgInit = IMG_Init(imgFlags);
+        init_assert((imgInit & imgFlags) == imgFlags, "SDL_image 初始化失败!");
+
+        // 初始化 SDL_mixer
+        int mixFlags = MIX_INIT_MP3 | MIX_INIT_OGG | MIX_INIT_FLAC;
+        int mixInit = Mix_Init(mixFlags);
+        init_assert((mixInit & mixFlags) == mixFlags, "SDL_mixer 初始化失败!");
+
+        // 初始化 SDL_ttf
+        init_assert(TTF_Init() == 0, "SDL_ttf 初始化失败!");
 
         // 初始化音频播放
-        Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+        init_assert(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == 0, "音频系统初始化失败!");
 
         // 启用中文输入法支持
         SDL_SetHint(SDL_HINT_IME_SHOW_UI, "1");
 
         // 创建窗口
         window = SDL_CreateWindow("村庄保卫战", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);
-        init_assert(window, "创建游戏窗口失败!");
+        init_assert(window != nullptr, "创建游戏窗口失败!");
 
-        // 创建渲染器
+        // 创建渲染器, 3个flags 分别是加速，防止屏幕framerate分裂
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
-        init_assert(renderer, "创建渲染器失败!");
+        init_assert(renderer != nullptr, "创建渲染器失败!");
     }
 
     // destructor free all resources
