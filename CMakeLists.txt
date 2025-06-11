@@ -7,8 +7,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/opt/homebrew/include/SDL2")
 
 # Find cJSON
-find_path(CJSON_INCLUDE_DIR cJSON.h PATHS /opt/homebrew/include /usr/local/include)
-find_library(CJSON_LIBRARY NAMES cjson PATHS /opt/homebrew/lib /usr/local/lib)
+find_path(CJSON_INCLUDE_DIR cJSON.h PATHS /opt/homebrew/include/cjson /usr/local/include/cjson /opt/homebrew/opt/cjson/include/cjson)
+find_library(CJSON_LIBRARY NAMES cjson PATHS /opt/homebrew/lib /usr/local/lib /opt/homebrew/opt/cjson/lib)
 
 if(NOT CJSON_INCLUDE_DIR OR NOT CJSON_LIBRARY)
     message(FATAL_ERROR "cJSON not found. Please make sure cJSON is installed and the paths are correct.")
