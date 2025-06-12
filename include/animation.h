@@ -68,21 +68,28 @@ public:
       */
      void set_frame_data(SDL_Texture *texture, int num_h, int num_v, const std::vector<int> &idx_list)
      {
+          // 获取纹理的宽度和高度
           int width_tex, height_tex;
-
           this->texture = texture;
           SDL_QueryTexture(texture, nullptr, nullptr, &width_tex, &height_tex);
-          width_frame = width_tex / num_h, height_frame = height_tex / num_v;
 
+          // 计算每一帧的宽度和高度
+          // 例如：如果纹理是 4x2 的精灵图，num_h=4, num_v=2
+          width_frame = width_tex / num_h;   // 每帧宽度 = 总宽度 / 水平帧数
+          height_frame = height_tex / num_v; // 每帧高度 = 总高度 / 垂直帧数
+
+          // 为每一帧创建源矩形（SDL_Rect）
           rect_src_list.resize(idx_list.size());
           for (size_t i = 0; i < idx_list.size(); i++)
           {
-               int idx = idx_list[i];
+               int idx = idx_list[i]; // 获取当前帧的索引
                SDL_Rect &rect_src = rect_src_list[i];
 
-               rect_src.x = (idx % num_h) * width_frame;
-               rect_src.y = (idx / num_h) * height_frame;
-               rect_src.w = width_frame, rect_src.h = height_frame;
+               // 计算当前帧在精灵图中的位置
+               rect_src.x = (idx % num_h) * width_frame;  // x = (索引 % 水平帧数) * 帧宽度
+               rect_src.y = (idx / num_h) * height_frame; // y = (索引 / 水平帧数) * 帧高度
+               rect_src.w = width_frame;                  // 设置帧宽度
+               rect_src.h = height_frame;                 // 设置帧高度
           }
      }
 
