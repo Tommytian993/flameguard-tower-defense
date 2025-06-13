@@ -2,8 +2,8 @@
 #define _AXE_BULLET_H_
 
 // 包含必要的头文件
-#include "bullet.h"            // 子弹基类
-#include "resources_manager.h" // 资源管理器，用于加载纹理和音效
+#include "bullet/bullet.h"             // 子弹基类
+#include "manager/resources_manager.h" // 资源管理器，用于加载纹理和音效
 
 // 斧头子弹类：继承自Bullet基类
 // 特点：

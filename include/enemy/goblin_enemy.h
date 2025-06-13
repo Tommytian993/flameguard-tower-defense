@@ -1,9 +1,9 @@
 #ifndef _GOBLIN_ENEMY_H_
 #define _GOBLIN_ENEMY_H_
 
-#include "enemy.h"
-#include "config_manager.h"
-#include "resources_manager.h"
+#include "enemy/enemy.h"
+#include "manager/config_manager.h"
+#include "manager/resources_manager.h"
 
 // 哥布林敌人类
 // 继承自Enemy基类，实现基础敌人的行为

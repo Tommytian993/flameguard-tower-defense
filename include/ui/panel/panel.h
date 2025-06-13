@@ -6,10 +6,10 @@
 #ifndef _PANEL_H_
 #define _PANEL_H_
 
-#include "tile.h"
-#include "resources_manager.h"
+#include "game_map/tile.h"
+#include "manager/resources_manager.h"
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <string>
 
 /**
@@ -20,17 +20,17 @@ class Panel
 {
 public:
      /**
-      * @brief 构造函数，初始化面板的选择光标纹理
+      * @brief 构造函数，初始化面板的选择光标纹理为nullptr
       */
      Panel()
      {
-          tex_select_cursor = ResourcesManager::instance()->get_texture_pool().find(ResID::Tex_UISelectCursor)->second;
+          tex_select_cursor = nullptr;
      }
 
      /**
-      * @brief 析构函数，清理文本纹理资源
+      * @brief 虚析构函数，确保正确释放派生类资源
       */
-     ~Panel()
+     virtual ~Panel()
      {
           SDL_DestroyTexture(tex_text_background);
           SDL_DestroyTexture(tex_text_foreground);
@@ -114,13 +114,15 @@ public:
                // 处理鼠标点击事件
                switch (hovered_target)
                {
-               case Panel::HoveredTarget::Top:
+               case HoveredTarget::None:
+                    break;
+               case HoveredTarget::Top:
                     on_click_top_area();
                     break;
-               case Panel::HoveredTarget::Left:
+               case HoveredTarget::Left:
                     on_click_left_area();
                     break;
-               case Panel::HoveredTarget::Right:
+               case HoveredTarget::Right:
                     on_click_right_area();
                     break;
                }
@@ -148,13 +150,15 @@ public:
           int val = 0;
           switch (hovered_target)
           {
-          case Panel::HoveredTarget::Top:
+          case HoveredTarget::None:
+               break;
+          case HoveredTarget::Top:
                val = val_top;
                break;
-          case Panel::HoveredTarget::Left:
+          case HoveredTarget::Left:
                val = val_left;
                break;
-          case Panel::HoveredTarget::Right:
+          case HoveredTarget::Right:
                val = val_right;
                break;
           }
@@ -206,16 +210,15 @@ public:
           SDL_Texture *tex_panel = nullptr;
           switch (hovered_target)
           {
-          case Panel::HoveredTarget::None:
-               tex_panel = tex_idle;
+          case HoveredTarget::None:
                break;
-          case Panel::HoveredTarget::Top:
+          case HoveredTarget::Top:
                tex_panel = tex_hovered_top;
                break;
-          case Panel::HoveredTarget::Left:
+          case HoveredTarget::Left:
                tex_panel = tex_hovered_left;
                break;
-          case Panel::HoveredTarget::Right:
+          case HoveredTarget::Right:
                tex_panel = tex_hovered_right;
                break;
           }
@@ -239,6 +242,8 @@ public:
           rect_dst_text.y -= offset_shadow.y;
           SDL_RenderCopy(renderer, tex_text_foreground, nullptr, &rect_dst_text);
      }
+
+     void set_select_cursor(SDL_Texture *tex) { tex_select_cursor = tex; }
 
 protected:
      /**

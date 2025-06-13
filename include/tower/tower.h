@@ -7,11 +7,11 @@
 #define _TOWER_H_
 
 #include "facing.h"
-#include "vector2.h"
+#include "game_map/vector2.h"
 #include "animation.h"
-#include "tower_type.h"
-#include "enemy_manager.h"
-#include "bullet_manager.h"
+#include "tower/tower_type.h"
+#include "manager/enemy_manager.h"
+#include "manager/bullet_manager.h"
 
 /**
  * @class Tower
@@ -102,7 +102,7 @@ public:
       */
      const Vector2 &get_position() const
      {
-          return size;
+          return position;
      }
 
      /**
@@ -145,7 +145,7 @@ protected:
      Animation anim_fire_right; ///< 向右攻击动画
 
      TowerType tower_type = TowerType::Archer;   ///< 塔的类型
-     double fire_speed = 0;                      ///< 子弹速度
+     double fire_speed = 100000;                 ///< 子弹速度
      BulletType bullet_type = BulletType::Arrow; ///< 子弹类型
 
 private:
@@ -292,7 +292,10 @@ private:
 
           // 计算子弹方向和速度
           Vector2 direction = target_enemy->get_position() - position;
-          BulletManager::instance()->fire_bullet(bullet_type, position, direction.normalize() * fire_speed * SIZE_TILE, damage);
+          direction = direction.normalize() * fire_speed; // 设置子弹速度
+
+          // 创建子弹，传递速度参数
+          BulletManager::instance()->create_bullet(bullet_type, position, target_enemy->get_position(), damage, -1, direction);
 
           // 更新塔的朝向
           bool is_show_x_anim = abs(direction.x) >= abs(direction.y);

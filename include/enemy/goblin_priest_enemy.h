@@ -1,9 +1,9 @@
 #ifndef _GOBLIN_PRIEST_ENEMY_H_
 #define _GOBLIN_PRIEST_ENEMY_H_
 
-#include "enemy.h"
-#include "config_manager.h"
-#include "resources_manager.h"
+#include "enemy/enemy.h"
+#include "manager/config_manager.h"
+#include "manager/resources_manager.h"
 
 class GoblinPriestEnemy : public Enemy
 {

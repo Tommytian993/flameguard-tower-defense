@@ -2,10 +2,10 @@
 #define _COIN_PROP_H_
 
 // 包含必要的头文件
-#include "tile.h"              // 瓦片类，用于获取瓦片大小常量
-#include "timer.h"             // 计时器类，用于控制金币动画和消失时间
-#include "vector2.h"           // 向量类，用于处理位置和速度
-#include "resources_manager.h" // 资源管理器，用于获取金币纹理
+#include "game_map/tile.h"             // 瓦片类，用于获取瓦片大小常量
+#include "timer.h"                     // 计时器类，用于控制金币动画和消失时间
+#include "game_map/vector2.h"          // 向量类，用于处理位置和速度
+#include "manager/resources_manager.h" // 资源管理器，用于获取金币纹理
 
 #include <SDL.h>
 

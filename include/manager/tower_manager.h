@@ -6,14 +6,14 @@
 #ifndef _TOWER_MANAGER_H_
 #define _TOWER_MANAGER_H_
 
-#include "tower.h"
-#include "tower_type.h"
+#include "tower/tower.h"
+#include "tower/tower_type.h"
 #include "manager.h"
-#include "archer_tower.h"
-#include "axeman_tower.h"
-#include "gunner_tower.h"
-#include "config_manager.h"
-#include "resources_manager.h"
+#include "tower/archer_tower.h"
+#include "tower/axeman_tower.h"
+#include "tower/gunner_tower.h"
+#include "manager/config_manager.h"
+#include "manager/resources_manager.h"
 
 #include <vector>
 

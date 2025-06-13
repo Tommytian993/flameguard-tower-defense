@@ -2,8 +2,8 @@
 #define _ARROW_BULLET_H_
 
 // 包含必要的头文件
-#include "bullet.h"            // 子弹基类
-#include "resources_manager.h" // 资源管理器，用于加载纹理和音效
+#include "bullet/bullet.h"             // 子弹基类
+#include "manager/resources_manager.h" // 资源管理器，用于加载纹理和音效
 
 // 箭矢子弹类：继承自Bullet基类
 // 特点：
@@ -27,16 +27,16 @@ public:
                                               .find(ResID::Tex_BulletArrow)
                                               ->second;
 
-          // 定义动画帧序列：使用第0和第1帧
-          static const std::vector<int> idx_list = {0, 1};
+          // 定义动画帧序列：使用所有帧
+          static const std::vector<int> idx_list = {0, 1, 2, 3};
 
           // 设置动画参数
           animation.set_loop(true);                            // 循环播放
           animation.set_interval(0.1);                         // 每帧间隔0.1秒
-          animation.set_frame_data(tex_arrow, 2, 1, idx_list); // 2列1行的纹理，使用指定帧
+          animation.set_frame_data(tex_arrow, 2, 2, idx_list); // 2行2列的纹理，使用所有帧
 
           can_rotated = true;       // 启用旋转
-          size.x = 48, size.y = 48; // 设置尺寸为48x48像素
+          size.x = 32, size.y = 32; // 设置尺寸为32x32像素
      }
 
      ~ArrowBullet() = default;

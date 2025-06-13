@@ -2,14 +2,15 @@
 #define _BULLET_MANAGER_H_
 
 // 包含必要的头文件
-#include "bullet.h"       // 子弹基类
-#include "manager.h"      // 管理器基类
-#include "arrow_bullet.h" // 箭矢子弹
-#include "axe_bullet.h"   // 斧头子弹
-#include "shell_bullet.h" // 炮弹子弹
-#include "bullet_type.h"  // 子弹类型枚举
+#include "bullet/bullet.h"       // 子弹基类
+#include "manager.h"             // 管理器基类
+#include "bullet/arrow_bullet.h" // 箭矢子弹
+#include "bullet/axe_bullet.h"   // 斧头子弹
+#include "bullet/shell_bullet.h" // 炮弹子弹
+#include "bullet/bullet_type.h"  // 子弹类型枚举
 
 #include <vector>
+#include <iostream>
 
 // 子弹管理器类：继承自Manager基类
 // 功能：
@@ -61,11 +62,12 @@ public:
      // @param target_position: 子弹的目标位置
      // @param damage: 子弹的伤害值
      // @param damage_range: 子弹的伤害范围（-1表示单体伤害）
+     // @param velocity: 子弹的速度向量
      // 功能：
      // 1. 根据类型创建对应的子弹对象
      // 2. 设置子弹的初始属性
      // 3. 将子弹添加到管理列表中
-     void create_bullet(BulletType type, const Vector2 &position, const Vector2 &target_position, double damage, double damage_range = -1)
+     void create_bullet(BulletType type, const Vector2 &position, const Vector2 &target_position, double damage, double damage_range = -1, const Vector2 &velocity = Vector2())
      {
           Bullet *bullet = nullptr;
 
@@ -85,7 +87,10 @@ public:
 
           // 设置子弹的基本属性
           bullet->set_position(position);
-          bullet->set_target_position(target_position);
+          if (velocity.length() > 0)
+               bullet->set_velocity(velocity);
+          else
+               bullet->set_target_position(target_position);
           bullet->set_damage(damage);
           bullet->set_damage_range(damage_range);
 
@@ -119,7 +124,7 @@ private:
                                 bullet_list.begin(), bullet_list.end(),
                                 [](const Bullet *bullet)
                                 {
-                                     bool deletable = !bullet->is_valid;
+                                     bool deletable = !bullet->is_valid();
                                      if (deletable)
                                           delete bullet;
                                      return deletable;

@@ -2,10 +2,10 @@
 #define _BULLET_H_
 
 // 包含必要的头文件
-#include "vector2.h"        // 二维向量类，用于位置和速度
-#include "enemy.h"          // 敌人类，用于碰撞检测
-#include "animation.h"      // 动画类，用于子弹动画
-#include "config_manager.h" // 配置管理器，用于读取地图边界
+#include "game_map/vector2.h"       // 二维向量类，用于位置和速度
+#include "enemy/enemy.h"            // 敌人类，用于碰撞检测
+#include "animation.h"              // 动画类，用于子弹动画
+#include "manager/config_manager.h" // 配置管理器，用于读取地图边界
 
 // 子弹类：游戏中的子弹实体
 // 功能包括：
@@ -28,6 +28,8 @@ public:
      void set_velocity(const Vector2 &velocity)
      {
           this->velocity = velocity;
+          printf("[DEBUG] Bullet velocity set to: (%.2f, %.2f), length: %.2f\n",
+                 velocity.x, velocity.y, velocity.length());
 
           if (can_rotated)
           {
@@ -94,7 +96,7 @@ public:
      // 2. 禁用碰撞检测
      void make_invalid()
      {
-          is_valid = false;
+          is_valid_flag = false;
           is_collisional = false;
      }
 
@@ -102,7 +104,7 @@ public:
      // 返回：如果子弹已失效，返回true
      bool can_remove() const
      {
-          return !is_valid;
+          return !is_valid_flag;
      }
 
      // 更新子弹状态
@@ -115,8 +117,15 @@ public:
      {
           // 更新动画
           animation.on_update(delta);
+
+          // 记录更新前的位置
+          Vector2 old_position = position;
+
           // 更新位置：位置 += 速度 * 时间
-          position += velocity * delta;
+          position += velocity * (delta * 100); // 增加时间缩放因子
+
+          printf("[DEBUG] Bullet update - Delta: %.6f, Old pos: (%.2f, %.2f), New pos: (%.2f, %.2f), Velocity: (%.2f, %.2f)\n",
+                 delta, old_position.x, old_position.y, position.x, position.y, velocity.x, velocity.y);
 
           // 获取地图边界
           static const SDL_Rect &rect_map = ConfigManager::instance()->rect_tile_map;
@@ -124,7 +133,7 @@ public:
           // 检查是否超出地图边界
           if (position.x - size.x / 2 <= rect_map.x || position.x + size.x / 2 >= rect_map.x + rect_map.w || position.y - size.y / 2 <= rect_map.y || position.y + size.y / 2 >= rect_map.y + rect_map.h)
           {
-               is_valid = false;
+               is_valid_flag = false;
           }
      }
 
@@ -152,8 +161,27 @@ public:
      // 2. 禁用碰撞检测
      virtual void on_collide(Enemy *enemy)
      {
-          is_valid = false;
+          is_valid_flag = false;
           is_collisional = false;
+     }
+
+     // 设置子弹目标位置
+     void set_target_position(const Vector2 &target_position)
+     {
+          Vector2 direction = target_position - position;
+          set_velocity(direction.normalize() * default_speed); // 使用归一化后的方向向量乘以默认速度
+     }
+
+     // 设置子弹伤害范围
+     void set_damage_range(double range)
+     {
+          damage_range = range;
+     }
+
+     // 检查子弹是否有效
+     bool is_valid() const
+     {
+          return is_valid_flag;
      }
 
 protected:
@@ -164,11 +192,12 @@ protected:
      Animation animation;      // 子弹动画
      bool can_rotated = false; // 是否可以旋转
 
-     double damage = 0;        // 伤害值
-     double damage_range = -1; // 伤害范围，-1表示单体伤害
+     double damage = 0;             // 伤害值
+     double damage_range = -1;      // 伤害范围，-1表示单体伤害
+     double default_speed = 100000; // 默认速度
 
 private:
-     bool is_valid = true;          // 子弹是否有效
+     bool is_valid_flag = true;     // 子弹是否有效
      bool is_collisional = true;    // 是否可以碰撞
      double angle_anim_rotated = 0; // 动画旋转角度
 };

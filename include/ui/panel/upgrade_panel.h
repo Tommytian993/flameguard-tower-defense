@@ -7,8 +7,8 @@
 #define _UPGRADE_PANEL_H_
 
 #include "panel.h"
-#include "tower_manager.h"
-#include "resources_manager.h"
+#include "manager/tower_manager.h"
+#include "manager/resources_manager.h"
 
 /**
  * @class UpgradePanel
@@ -36,7 +36,7 @@ public:
       * @brief 更新面板状态
       * @param renderer SDL渲染器指针
       */
-     void on_update(SDL_Renderer *renderer)
+     void on_update(SDL_Renderer *renderer) override
      {
           static TowerManager *instance = TowerManager::instance();
 

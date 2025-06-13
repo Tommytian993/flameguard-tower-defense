@@ -7,11 +7,12 @@
 #define _PLACE_PANEL_H_
 
 #include "panel.h"
-#include "coin_manager.h"
-#include "tower_manager.h"
-#include "resources_manager.h"
+#include "manager/coin_manager.h"
+#include "manager/tower_manager.h"
+#include "manager/resources_manager.h"
+#include "manager/config_manager.h"
 
-#include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL2_gfxPrimitives.h>
 
 /**
  * @class PlacePanel
@@ -52,7 +53,7 @@ public:
           reg_right = (int)instance->get_damage_range(TowerType::Gunner) * SIZE_TILE;
 
           // 获取当前选中瓦片的位置
-          SDL_Point pos_tile = Tile::get_pos_by_idx(idx_tile_selected);
+          SDL_Point pos_tile = Tile::get_pos_by_idx(idx_tile_selected, ConfigManager::instance()->rect_tile_map);
           set_center_pos(pos_tile);
 
           // 调用基类的更新方法
@@ -67,6 +68,8 @@ public:
           int reg = 0;
           switch (hovered_target)
           {
+          case Panel::HoveredTarget::None:
+               break;
           case Panel::HoveredTarget::Top:
                reg = reg_top;
                break;

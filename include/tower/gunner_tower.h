@@ -7,7 +7,7 @@
 #define _GUNNER_TOWER_H_
 
 #include "tower.h"
-#include "resources_manager.h"
+#include "manager/resources_manager.h"
 
 /**
  * @class GunnerTower

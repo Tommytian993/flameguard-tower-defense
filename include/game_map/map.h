@@ -1,14 +1,15 @@
 #ifndef _MAP_H_
 #define _MAP_H_
 
-#include "tile.h"
-#include "route.h"
+#include "game_map/tile.h"
+#include "game_map/route.h"
 
 #include <SDL.h>
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <unordered_map>
+#include <iostream>
 
 // 地图类：管理游戏地图的加载和访问
 class Map
@@ -28,7 +29,10 @@ public:
      {
           std::ifstream file(path);
           if (!file.good())
+          {
+               std::cerr << "Failed to open map file: " << path << std::endl;
                return false;
+          }
 
           TileMap tile_map_temp;
 
@@ -54,13 +58,17 @@ public:
                     tile_map_temp[idx_y].emplace_back();
                     Tile &tile = tile_map_temp[idx_y].back();
                     load_tile_from_string(tile, str_tile);
+                    std::cout << "Loaded tile at (" << idx_x << "," << idx_y << "): " << str_tile << std::endl;
                }
           }
 
           file.close();
 
           if (tile_map_temp.empty() || tile_map_temp[0].empty())
+          {
+               std::cerr << "Map file is empty or invalid." << std::endl;
                return false;
+          }
 
           tile_map = tile_map_temp;
 

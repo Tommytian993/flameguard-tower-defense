@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(untitled)
+project(TdGame)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -16,17 +16,17 @@ endif()
 
 # Add include directories
 include_directories(${CJSON_INCLUDE_DIR})
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
-add_executable(untitled main.cpp
-        include/manager/manager.h
-        include/manager/game_manager.h
-        include/tile.h
-        include/map.h
-        include/route.h
-        include/manager/config_manager.h
-        include/enemy/enemy_type.h
-        include/enemy/enemy_type.h
-        include/wave.h)
+# Add source files
+file(GLOB_RECURSE SOURCES 
+    "src/*.cpp"
+    "include/*.h"
+    "include/*/*.h"
+    "include/*/*/*.h"
+)
+
+add_executable(TdGame ${SOURCES})
 
 # Find SDL2
 find_path(SDL2_INCLUDE_DIR SDL.h PATHS /opt/homebrew/include/SDL2 /usr/local/include/SDL2)
@@ -43,6 +43,10 @@ find_library(SDL2_MIXER_LIBRARY NAMES SDL2_mixer PATHS /opt/homebrew/lib /usr/lo
 # Find SDL2_ttf
 find_path(SDL2_TTF_INCLUDE_DIR SDL_ttf.h PATHS /opt/homebrew/include/SDL2 /usr/local/include/SDL2)
 find_library(SDL2_TTF_LIBRARY NAMES SDL2_ttf PATHS /opt/homebrew/lib /usr/local/lib)
+
+# Find SDL2_gfx
+find_path(SDL2_GFX_INCLUDE_DIR SDL2_gfxPrimitives.h PATHS /opt/homebrew/include/SDL2 /usr/local/include/SDL2)
+find_library(SDL2_GFX_LIBRARY NAMES SDL2_gfx PATHS /opt/homebrew/lib /usr/local/lib)
 
 # Check if all required libraries are found
 if(NOT SDL2_INCLUDE_DIR OR NOT SDL2_LIBRARY)
@@ -61,5 +65,9 @@ if(NOT SDL2_TTF_INCLUDE_DIR OR NOT SDL2_TTF_LIBRARY)
     message(FATAL_ERROR "SDL2_ttf not found. Please make sure SDL2_ttf is installed and the paths are correct.")
 endif()
 
+if(NOT SDL2_GFX_INCLUDE_DIR OR NOT SDL2_GFX_LIBRARY)
+    message(FATAL_ERROR "SDL2_gfx not found. Please make sure SDL2_gfx is installed and the paths are correct.")
+endif()
+
 # Link libraries
-target_link_libraries(untitled ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_MIXER_LIBRARY} ${SDL2_TTF_LIBRARY} ${CJSON_LIBRARY})
+target_link_libraries(TdGame ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_MIXER_LIBRARY} ${SDL2_TTF_LIBRARY} ${SDL2_GFX_LIBRARY} ${CJSON_LIBRARY})

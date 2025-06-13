@@ -1,7 +1,7 @@
 #ifndef _WAVE_H_
 #define _WAVE_H_
 
-#include "enemy_type.h"
+#include "enemy/enemy_type.h"
 
 #include <vector>
 
