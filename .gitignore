@@ -175,6 +175,8 @@ CMakeUserPresets.json
 #vscode
 .vscode/
 
+# macOS system files
+.DS_Store
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,cmake,clion
 
