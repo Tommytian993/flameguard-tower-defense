@@ -17,15 +17,11 @@ Currently working on:
 - More tower and enemy types
 - New backgrounds and themes
 
-## Build
+## Build & Run
 ```bash
 mkdir build && cd build
 cmake ..
 make
-```
-
-## Run
-```bash
 ./TdGame
 ```
 
