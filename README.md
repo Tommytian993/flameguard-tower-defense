@@ -11,11 +11,11 @@ A simple tower defense game built with C++ and SFML.
 
 ## Unfinished Developments
 Currently working on:
-- Level system with different difficulties
-- New hero characters
-- Shop system for heroes and items
+- Level map with different difficulties
+- New dragon characters
+- Shop system for heroes and items(spells, potions)
 - More tower and enemy types
-- New backgrounds and themes
+- New map backgrounds and themes
 
 ## Build & Run
 ```bash
