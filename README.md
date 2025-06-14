@@ -1,4 +1,4 @@
-# Tower Defense Game
+# 2D Dragon Village Defense
 
 A simple tower defense game built with C++ and SFML.
 
