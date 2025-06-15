@@ -3,13 +3,12 @@
 A simple 2D tower defense game built with C++ and SDL.
 
 ## Implementedz Features
-![ui_heart](https://github.com/user-attachments/assets/4348df5b-fc80-4216-8c2e-1f54fb9e6f65)
 - Multiple tower types 
-- Different enemy types with unique behaviors![ui_heart](https://github.com/user-attachments/assets/4348df5b-fc80-4216-8c2e-1f54fb9e6f65)
+- Different enemy types with unique behaviors!
 - Upgrade system for towers
-- Resource management (coins)![ui_coin](https://github.com/user-attachments/assets/9c13aedf-f7a1-4db3-9796-83719f5e6bff) ![ui_heart](https://github.com/user-attachments/assets/4348df5b-fc80-4216-8c2e-1f54fb9e6f65)
+- Resource management (coins)!
 
-- Wave-based enemy spawning![ui_heart](https://github.com/user-attachments/assets/4348df5b-fc80-4216-8c2e-1f54fb9e6f65)<img width="49" alt="Screenshot 2025-06-13 at 10 32 45 PM" src="https://github.com/user-attachments/assets/953fc12e-4a44-4af1-aed3-0c9d1b1cab9f" />
+- Wave-based enemy spawning!
 
 
 
