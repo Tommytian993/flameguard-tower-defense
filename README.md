@@ -50,3 +50,27 @@ cmake ..
 make
 ./TdGame
 
+
+## Controls
+
+### Mouse Controls 🖱️
+- **Right Click**: Select tile to show tower options
+- **Right Click**: Place tower
+
+### Keyboard Controls ⌨️
+- **W/A/S/D**: Move character 
+- **J**: Special Attack #1
+- **C**: Special Attack #2
+
+### Game Interface
+-  **Health Bar**: Top-left corner
+-  **Coins**: Top-left corner, under the Health Bar
+-  **Current Dragon Character**: Top-left corner
+-  **Dragon SKill CoolDown**: Top-left corner right next to the character logo
+
+### Tips 🏆
+- Place towers strategically to cover multiple paths
+- Upgrade towers before waves get larger
+- Save gold for expensive but powerful towers
+- Watch out for special enemies like Goblin Priest and King Slime(and potential future bosses)
+
