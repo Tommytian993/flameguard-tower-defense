@@ -48,8 +48,8 @@ Currently working on:
 mkdir build && cd build
 cmake ..
 make
-./TdGame
-
+./TdGame 
+```
 
 ## Controls
 
