@@ -4,8 +4,7 @@ A simple 2D tower defense game built with C++ and SDL.
 
 ## Implemented Features
 
-- Multiple tower types  
-  <img src="https://github.com/user-attachments/assets/01a8115b-dc36-4f8d-b61b-9c774d2771e1" height="16" style="vertical-align: middle;" />
+- Multiple tower types  <img src="https://github.com/user-attachments/assets/01a8115b-dc36-4f8d-b61b-9c774d2771e1" height="16" style="vertical-align: middle;" />
   <img src="https://github.com/user-attachments/assets/ccbf6ccf-38da-4f77-83c0-2d774e718dfb" height="16" style="vertical-align: middle;" />
   <img src="https://github.com/user-attachments/assets/bec8380a-a28e-439f-a5b5-dabd3547ef9a" height="16" style="vertical-align: middle;" />
 
