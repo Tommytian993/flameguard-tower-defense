@@ -7,7 +7,6 @@ A simple 2D tower defense game built with C++ and SDL.
 - Different enemy types with unique behaviors!
 - Upgrade system for towers
 - Resource management (coins)!
-
 - Wave-based enemy spawning!
 
 
