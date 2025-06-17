@@ -53,18 +53,18 @@ make
 
 ## Controls
 
-### Mouse Controls 🖱️
+### Mouse Controls 
 - **Right Click**: Select tile to show tower options
 - **Right Click**: Place tower
 
-### Keyboard Controls ⌨️
+### Keyboard Controls 
 - **W/A/S/D**: Move character 
 - **J**: Special Attack #1
 - **C**: Special Attack #2
 
 ### Game Interface
--  **Health Bar**: Top-left corner
--  **Coins**: Top-left corner, under the Health Bar
+-  <img src="https://github.com/user-attachments/assets/217487d8-96a1-43f2-9cd2-a848803f1fa2" height="16" style="vertical-align: middle;" />**Health Bar**: Top-left corner
+-  <img src="https://github.com/user-attachments/assets/0f2201ac-afe6-4294-b6c5-6a6731e206dd" height="16" style="vertical-align: middle;" /> **Coins**: Top-left corner, under the Health Bar
 -  **Current Dragon Character**: Top-left corner
 -  **Dragon SKill CoolDown**: Top-left corner right next to the character logo
 
