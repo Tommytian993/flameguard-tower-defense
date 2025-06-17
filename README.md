@@ -29,6 +29,3 @@ cmake ..
 make
 ./TdGame
 ```
-
-## Controls
-...
