@@ -65,7 +65,7 @@ make
 ### Game Interface
 -  <img src="https://github.com/user-attachments/assets/217487d8-96a1-43f2-9cd2-a848803f1fa2" height="16" style="vertical-align: middle;" />**Health Bar**: Top-left corner
 -  <img src="https://github.com/user-attachments/assets/0f2201ac-afe6-4294-b6c5-6a6731e206dd" height="16" style="vertical-align: middle;" /> **Coins**: Top-left corner, under the Health Bar
--  <img src="[https://github.com/user-attachments/assets/0f2201ac-afe6-4294-b6c5-6a6731e206dd](https://github.com/user-attachments/assets/a3f13280-4fb7-45a5-9740-37cdc81cf50c)" height="16" style="vertical-align: middle;" />**Current Dragon Character**: Top-left corner
+-  <img src="https://github.com/user-attachments/assets/a3f13280-4fb7-45a5-9740-37cdc81cf50c" height="16" style="vertical-align: middle;" />**Current Dragon Character**: Top-left corner
 -  **Dragon SKill CoolDown**: Top-left corner right next to the character logo
 
 ### Tips 🏆
