@@ -12,9 +12,9 @@ A simple 2D tower defense game built with C++ and SDL.
 
 
 
-## Unfinished Developments<img width="101" alt="Screenshot 2025-06-13 at 10 37 49 PM" src="https://github.com/user-attachments/assets/062d4d6d-715f-419c-9a9a-c75648aab99c" />
+## Unfinished Developments
 
-Currently working on:<img width="53" alt="Screenshot 2025-06-13 at 10 37 59 PM" src="https://github.com/user-attachments/assets/1916dd45-10a5-4ecd-a5c0-dcfcb17d0767" />
+Currently working on:
 
 - Level map with different difficulties
 - New dragon characters
