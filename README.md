@@ -1,7 +1,6 @@
 # Flameguard Tower Defense
 
 A simple 2D tower defense game built with C++ and SDL.
-https://drive.google.com/file/d/1njiuXL50DGkpbNA0HNU86M3xymPJ3Kas/view
 ## Implemented Features
 
 - Multiple tower types  <img src="https://github.com/user-attachments/assets/01a8115b-dc36-4f8d-b61b-9c774d2771e1" height="16" style="vertical-align: middle;" />
